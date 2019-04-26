@@ -37,3 +37,43 @@ p2.legend(loc="best")
 
 #show scatter plot
 p2.show()
+
+#getting mean values of all 4 features plotting them against each other .. nioce brah
+#Iris setosa mean values
+petal_length_setosa = setosa['petal_length'].mean()
+petal_width_setosa = setosa['petal_width'].mean()
+sepal_length_setosa = setosa['sepal_length'].mean()
+sepal_width_setosa = setosa['sepal_width'].mean()
+
+#Iris versicolor mean values
+petal_length_versicolor = versicolor['petal_length'].mean()
+petal_width_versicolor = versicolor['petal_width'].mean()
+sepal_length_versicolor = versicolor['sepal_length'].mean()
+sepal_width_versicolor = versicolor['sepal_width'].mean()
+
+#Iris virginica mean values
+petal_length_virginica = virginica['petal_length'].mean()
+petal_width_virginica = virginica['petal_width'].mean()
+sepal_length_virginica = virginica['sepal_length'].mean()
+sepal_width_virginica = virginica['sepal_width'].mean()
+
+#lists of values for bar plot
+petal_lengths = [petal_length_setosa, petal_length_versicolor, petal_length_virginica]
+petal_widths = [petal_width_setosa, petal_width_versicolor, petal_width_virginica]
+sepal_lengths = [sepal_length_setosa, sepal_length_versicolor, sepal_length_virginica]
+sepal_widths = [sepal_width_setosa, sepal_width_versicolor, sepal_width_virginica]
+index = ['Iris setosa', 'Iris versicolor', 'Iris virginica']
+
+#dataframe for bar plot
+bp = pd.DataFrame({'petal length': petal_lengths,'petal width': petal_widths, 'sepal length': sepal_lengths,'sepal width': sepal_widths}, index=index)
+
+#plot the dataframe
+ax = bp.plot.bar(rot=0)
+
+#title for the bar plot and axis labels
+plt.title('Mean Values of Iris flower features by species')
+plt.xlabel('Species')
+plt.ylabel('Centimetres')
+
+#show bar plot
+plt.show()
