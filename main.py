@@ -38,7 +38,7 @@ p2.legend(loc="best")
 #show scatter plot
 p2.show()
 
-#getting mean values of all 4 features plotting them against each other .. nioce brah
+#getting mean values of all 4 features using pandas .mean()
 #Iris setosa mean values
 petal_length_setosa = setosa['petal_length'].mean()
 petal_width_setosa = setosa['petal_width'].mean()
@@ -57,7 +57,7 @@ petal_width_virginica = virginica['petal_width'].mean()
 sepal_length_virginica = virginica['sepal_length'].mean()
 sepal_width_virginica = virginica['sepal_width'].mean()
 
-#lists of values for bar plot
+#lists of mean values for bar plot
 petal_lengths = [petal_length_setosa, petal_length_versicolor, petal_length_virginica]
 petal_widths = [petal_width_setosa, petal_width_versicolor, petal_width_virginica]
 sepal_lengths = [sepal_length_setosa, sepal_length_versicolor, sepal_length_virginica]
@@ -65,15 +65,35 @@ sepal_widths = [sepal_width_setosa, sepal_width_versicolor, sepal_width_virginic
 index = ['Iris setosa', 'Iris versicolor', 'Iris virginica']
 
 #dataframe for bar plot
-bp = pd.DataFrame({'petal length': petal_lengths,'petal width': petal_widths, 'sepal length': sepal_lengths,'sepal width': sepal_widths}, index=index)
+bp = pd.DataFrame({'petal length': petal_lengths,'sepal length': sepal_lengths,'petal width': petal_widths, 'sepal width': sepal_widths}, index=index)
 
 #plot the dataframe
 ax = bp.plot.bar(rot=0)
 
-#title for the bar plot and axis labels
+#title for the bar plot and axis label
 plt.title('Mean Values of Iris flower features by species')
-plt.xlabel('Species')
 plt.ylabel('Centimetres')
 
 #show bar plot
 plt.show()
+
+#print out maximums and minimums of the sets using numpy
+all_petal_lengths = df['petal_length']
+all_petal_widths = df['petal_width']
+all_sepal_lengths = df['sepal_length']
+all_sepal_width = df['sepal_width']
+
+max_petal_length = np.max(all_petal_lengths)
+print("Max petal length of the dataset:", max_petal_length, "cm")
+
+min_petal_length = np.min(all_petal_lengths)
+print("Min petal length of the dataset:", min_petal_length, "cm")
+
+max_petal_width = np.max(all_petal_widths)
+print("Max petal width of the dataset:", max_petal_width, "cm")
+
+min_petal_width = np.min(all_petal_widths)
+print("Min petal width of the dataset:", min_petal_length, "cm")
+
+max_sepal_length = np.max(all_sepal_lengths)
+print("Max sepal length of the dataset:", max_sepal_length, "cm")
