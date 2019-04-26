@@ -5,18 +5,54 @@ import matplotlib.pyplot as plt
 #reading iris dataset into dataframe df
 df = pd.read_csv('iris.csv')
 
-#filtering the dataset to seperate the 3 species for plotting
+#filtering the dataset to seperate the 3 species for plotting and calculations
 setosa = df[df['species'] == 'Iris-setosa']
 versicolor = df[df['species'] == 'Iris-versicolor']
 virginica = df[df['species'] == 'Iris-virginica']
+
+#petal length table using numpy to get the max/min/mean petal length of each species and the overall dataset
+print("----- Petal Length Table ------")
+petal_length_table = pd.DataFrame(np.array([[np.max(setosa['petal_length']), np.min(setosa['petal_length']), np.mean(setosa['petal_length'])],
+                     [np.max(versicolor['petal_length']), np.min(versicolor['petal_length']), np.mean(versicolor['petal_length'])],
+                     [np.max(virginica['petal_length']), np.min(virginica['petal_length']), np.mean(virginica['petal_length'])],
+                     [np.max(df['petal_length']), np.min(df['petal_length']), np.mean(df['petal_length'])]]), 
+                     columns=['max', 'min', 'mean'], index=['Iris setosa','Iris versicolor','Iris virginica','All Data'])
+print(petal_length_table) #print table to console
+
+#petal width table using numpy to get the max/min/mean petal width of each species and the overall dataset
+print("\n----- Petal Width Table -------")
+petal_width_table = pd.DataFrame(np.array([[np.max(setosa['petal_width']), np.min(setosa['petal_width']), np.mean(setosa['petal_width'])],
+                     [np.max(versicolor['petal_width']), np.min(versicolor['petal_width']), np.mean(versicolor['petal_width'])],
+                     [np.max(virginica['petal_width']), np.min(virginica['petal_width']), np.mean(virginica['petal_width'])],
+                     [np.max(df['petal_width']), np.min(df['petal_width']), np.mean(df['petal_width'])]]),
+                     columns=['max', 'min', 'mean'], index=['Iris setosa','Iris versicolor','Iris virginica','All Data'])
+print(petal_width_table)
+
+#sepal length table using numpy to get the max/min/mean sepal length of each species and the overall dataset
+print("\n------ Sepal Length Table ------")
+sepal_length_table = pd.DataFrame(np.array([[np.max(setosa['sepal_length']), np.min(setosa['sepal_length']), np.mean(setosa['sepal_length'])],
+                     [np.max(versicolor['sepal_length']), np.min(versicolor['sepal_length']), np.mean(versicolor['sepal_length'])],
+                     [np.max(virginica['sepal_length']), np.min(virginica['sepal_length']), np.mean(virginica['sepal_length'])],
+                     [np.max(df['sepal_length']), np.min(df['sepal_length']), np.mean(df['sepal_length'])]]),
+                     columns=['max', 'min', 'mean'], index=['Iris setosa','Iris versicolor','Iris virginica','All Data'])
+print(sepal_length_table)
+
+#sepal width table using numpy to get the max/min/mean sepal width of each species and the overall dataset
+print("\n------ Sepal Width Table ------")
+sepal_width_table = pd.DataFrame(np.array([[np.max(setosa['sepal_width']), np.min(setosa['sepal_width']), np.mean(setosa['sepal_width'])],
+                     [np.max(versicolor['sepal_width']), np.min(versicolor['sepal_width']), np.mean(versicolor['sepal_width'])],
+                     [np.max(virginica['sepal_width']), np.min(virginica['sepal_width']), np.mean(virginica['sepal_width'])],
+                     [np.max(df['sepal_width']), np.min(df['sepal_width']), np.mean(df['sepal_width'])]]),
+                     columns=['max', 'min', 'mean'], index=['Iris setosa','Iris versicolor','Iris virginica','All Data'])
+print(sepal_width_table)
 
 #scatter plot for sepal length vs petal length for the 3 species in the dataset
 plt.scatter(setosa['sepal_length'], setosa['petal_length'], color="red", alpha=0.5, label="Iris setosa")
 plt.scatter(versicolor['sepal_length'], versicolor['petal_length'], color="green", alpha=0.5, label="Iris versicolor")
 plt.scatter(virginica['sepal_length'], virginica['petal_length'], color="blue", alpha=0.5, label="Iris virginica")
 
-#title and axis names
-plt.title("sepal Length vs petal Length")
+#title and axis labels
+plt.title("sepal length vs petal length")
 plt.xlabel("sepal length (cm)")
 plt.ylabel("petal length (cm)")
 plt.legend(loc="lower right")
@@ -30,6 +66,7 @@ p2.scatter(setosa['sepal_width'], setosa['petal_width'], color="red", alpha=0.5,
 p2.scatter(versicolor['sepal_width'], versicolor['petal_width'], color="green", alpha=0.5, label="Iris versicolor")
 p2.scatter(virginica['sepal_width'], virginica['petal_width'], color="blue", alpha=0.5, label="Iris virginica")
 
+#title and axis labes
 p2.title("sepal width vs petal width")
 p2.xlabel("sepal width (cm)")
 p2.ylabel("petal width (cm)")
@@ -76,24 +113,3 @@ plt.ylabel('Centimetres')
 
 #show bar plot
 plt.show()
-
-#print out maximums and minimums of the sets using numpy
-all_petal_lengths = df['petal_length']
-all_petal_widths = df['petal_width']
-all_sepal_lengths = df['sepal_length']
-all_sepal_width = df['sepal_width']
-
-max_petal_length = np.max(all_petal_lengths)
-print("Max petal length of the dataset:", max_petal_length, "cm")
-
-min_petal_length = np.min(all_petal_lengths)
-print("Min petal length of the dataset:", min_petal_length, "cm")
-
-max_petal_width = np.max(all_petal_widths)
-print("Max petal width of the dataset:", max_petal_width, "cm")
-
-min_petal_width = np.min(all_petal_widths)
-print("Min petal width of the dataset:", min_petal_length, "cm")
-
-max_sepal_length = np.max(all_sepal_lengths)
-print("Max sepal length of the dataset:", max_sepal_length, "cm")
