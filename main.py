@@ -19,6 +19,7 @@ plt.scatter(virginica['sepal_length'], virginica['petal_length'], color="blue", 
 plt.title("Sepal Length vs Petal Length")
 plt.xlabel("sepal length (cm)")
 plt.ylabel("petal length (cm)")
+plt.legend(loc="lower right")
 
 #show scatter plot
 plt.show()
