@@ -16,10 +16,24 @@ plt.scatter(versicolor['sepal_length'], versicolor['petal_length'], color="green
 plt.scatter(virginica['sepal_length'], virginica['petal_length'], color="blue", alpha=0.5, label="Iris virginica")
 
 #title and axis names
-plt.title("Sepal Length vs Petal Length")
+plt.title("sepal Length vs petal Length")
 plt.xlabel("sepal length (cm)")
 plt.ylabel("petal length (cm)")
 plt.legend(loc="lower right")
 
 #show scatter plot
 plt.show()
+
+#scatter plot for sepal width vs petal width for the 3 species in the dataset
+p2 = plt
+p2.scatter(setosa['sepal_width'], setosa['petal_width'], color="red", alpha=0.5, label="Iris setosa")
+p2.scatter(versicolor['sepal_width'], versicolor['petal_width'], color="green", alpha=0.5, label="Iris versicolor")
+p2.scatter(virginica['sepal_width'], virginica['petal_width'], color="blue", alpha=0.5, label="Iris virginica")
+
+p2.title("sepal width vs petal width")
+p2.xlabel("sepal width (cm)")
+p2.ylabel("petal width (cm)")
+p2.legend(loc="best")
+
+#show scatter plot
+p2.show()
